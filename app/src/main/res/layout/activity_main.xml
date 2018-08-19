@@ -5,7 +5,7 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.wandcf.letapplication.MainActivity">
+    tools:context="com.wandcf.letapplication.view.MainActivity">
 
     <TextView
         android:id="@+id/message"
