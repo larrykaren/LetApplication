@@ -5,7 +5,6 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-//牛羊满山坡
     compileSdkVersion 26
     buildToolsVersion "26.0.2"
     defaultConfig {
@@ -22,6 +21,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions{
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -33,4 +40,19 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.0'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.0'
+
+    // LeanCloud 基础包
+    implementation ('cn.leancloud.android:avoscloud-sdk:v4.6.4')
+
+    // 推送与即时通讯需要的包
+    implementation ('cn.leancloud.android:avoscloud-push:v4.6.4@aar'){transitive = true}
+
+    // LeanCloud 统计包
+    implementation ('cn.leancloud.android:avoscloud-statistics:v4.6.4')
+
+    // LeanCloud 用户反馈包
+    implementation ('cn.leancloud.android:avoscloud-feedback:v4.6.4@aar')
+
+    // LeanCloud 应用内搜索包
+    implementation ('cn.leancloud.android:avoscloud-search:v4.6.4@aar')
 }
